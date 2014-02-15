@@ -1,0 +1,145 @@
+<xml>
+
+<!-- Build file for waxe.ndll -->
+<!-- Install hxcpp and run with 'haxelib run hxcpp Build.xml' -->
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+
+<set name="DBG" value="d" if="debug"/>
+
+<set name="WXROOT" value="${haxelib:waxe-works}" unless="WXROOT"/>
+<set name="WXLIB" value="${WXROOT}/lib/${BINDIR}" />
+
+<set name="LIB_DIR" value="-L${WXLIB}" unless="windows"/>
+<set name="LIB_DIR" value="-libpath:${WXLIB}" if="windows"/>
+
+<!-- <set name="LIB_DIR" value="-L../../wxwidgets-static/lib" unless="windows"/> -->
+
+<files id="files">
+   <!--<compilerflag value = "-Iinclude"/>-->
+   <compilerflag value = "-I${WXROOT}/include"/>
+   <compilerflag value = "-Iwaxe"/>
+   <compilerflag value = "-D_FILE_OFFSET_BITS=64" />
+   <compilerflag value = "-D_LARGE_FILES=64" />
+   <compilerflag value = "-D__WXOSX_COCOA__" if="macos"/>
+   <compilerflag value = "-DwxDEBUG_LEVEL=0" if="macos"/>
+   <compilerflag value = "-D__WXGTK__" if="linux"/>
+   <compilerflag value = "-D__WXMSW__" if="windows"/>
+
+   <file name="waxe/App.cpp"/>
+   <file name="waxe/HaxeAPI.cpp"/>
+   <file name="waxe/Window.cpp"/>
+   <file name="waxe/Frame.cpp"/>
+   <file name="waxe/MDI.cpp"/>
+   <file name="waxe/StaticText.cpp"/>
+   <file name="waxe/StaticBox.cpp"/>
+   <file name="waxe/Notebook.cpp"/>
+   <file name="waxe/TextCtrl.cpp"/>
+   <file name="waxe/Sizer.cpp"/>
+   <file name="waxe/Panel.cpp"/>
+   <file name="waxe/Dialog.cpp"/>
+   <file name="waxe/Button.cpp"/>
+   <file name="waxe/ListBox.cpp"/>
+   <file name="waxe/CheckBox.cpp"/>
+   <file name="waxe/ComboBox.cpp"/>
+   <file name="waxe/DC.cpp"/>
+   <file name="waxe/Pen.cpp"/>
+   <file name="waxe/Brush.cpp"/>
+   <file name="waxe/Font.cpp"/>
+   <file name="waxe/Bitmap.cpp"/>
+   <file name="waxe/Menu.cpp"/>
+   <file name="waxe/Scintilla.cpp"/>
+   <file name="waxe/GLCanvas.cpp"/>
+   <file name="waxe/Timer.cpp"/>
+
+   <file name="waxe/Clay.cpp"/>
+   <file name="waxe/clay/Container.cpp"/>
+   <file name="waxe/clay/HintWindow.cpp"/>
+   <file name="waxe/clay/Manager.cpp"/>
+   <file name="waxe/clay/Serializer.cpp"/>
+   <file name="waxe/clay/Skin.cpp"/>
+   <file name="waxe/clay/ToolBox.cpp"/>
+
+
+</files>
+
+<set name="NO_AUTO_MSVC" value="1" />
+
+<target id="waxe.ndll" tool="linker" toolid="${STD_MODULE_LINK}" output="${LIBPREFIX}waxe${LIBEXTRA}">
+   <files id="files"/>
+   <outdir name="../${NDLLDIR}/${BINDIR}"/>
+   <flag value="${LIB_DIR}"/>
+
+   <section unless="static_link">
+      <lib name="${WXLIB}/libwxwidgets.lib" if="windows"/>
+      <lib name="-lwxwidgets" unless="windows"/>
+      <ext value=".ndll"/>
+
+      <section if="linux">
+         <lib name="-L${WXLIB}/${BINDIR}" />
+         <lib name="-lgtk-x11-2.0" />
+         <lib name="-lglib-2.0" />
+         <lib name="-lgobject-2.0" />
+         <lib name="-lgdk-x11-2.0" />
+         <lib name="-lgdk_pixbuf-2.0" />
+         <lib name="-lcairo" />
+         <lib name="-lpango-1.0" />
+         <lib name="-lpangocairo-1.0" />
+         <lib name="-lgthread-2.0" />
+         <lib name="-lGL" />
+         <lib name="-lXxf86vm" />
+         <lib name="-lXext" />
+         <lib name="-lX11" />
+         <lib name="-lSM" />
+         <lib name="-lpthread" />
+      </section>
+   
+   
+      <section if="windows">
+         <lib name="user32.lib" />
+         <lib name="winspool.lib" />
+         <lib name="advapi32.lib" />
+         <lib name="gdi32.lib" />
+         <lib name="comdlg32.lib" />
+         <lib name="comctl32.lib" />
+         <lib name="ole32.lib" />
+         <lib name="oleaut32.lib" />
+         <lib name="rpcrt4.lib" />
+         <lib name="shell32.lib" />
+         <lib name="kernel32.lib" />
+      </section>
+   
+      <section if="macos">
+         <lib name="-framework" />
+         <lib name="IOKit" />
+         <lib name="-framework" />
+         <lib name="Carbon" />
+         <lib name="-framework" />
+         <lib name="Cocoa" />
+         <lib name="-framework" />
+         <lib name="System" />
+         <lib name="-framework" />
+         <lib name="AudioToolbox" />
+         <lib name="-framework" />
+         <lib name="QuickTime" />
+         <lib name="-framework" />
+         <lib name="OpenGL" />
+         <lib name="-framework" />
+         <lib name="AGL" />
+         <lib name="-framework" />
+         <lib name="WebKit" />
+         <lib name="-lz" />
+         <lib name="-liconv" />
+         <lib name="-lpthread" />
+      </section>
+   </section>
+   
+</target>
+
+<target id="default">
+   <target id="waxe.ndll"/>
+</target>
+
+
+</xml>

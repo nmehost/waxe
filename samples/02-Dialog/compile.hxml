@@ -1,0 +1,14 @@
+-main Sample
+-cp ../..
+-neko Sample.n
+-resource bitmaps/copy.bmp
+-resource bitmaps/cut.bmp
+-resource bitmaps/help.bmp
+-resource bitmaps/new.bmp
+-resource bitmaps/open.bmp
+-resource bitmaps/page.bmp
+-resource bitmaps/paste.bmp
+-resource bitmaps/preview.bmp
+-resource bitmaps/print.bmp
+-resource bitmaps/save.bmp
+

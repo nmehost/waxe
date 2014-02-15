@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+  <app
+     file="NmmlEdit"
+     title="NmmlEdit"
+     package="com.waxe.NmmlEdit"
+     version="1.0"
+     company="waxe"
+     frame="Dialog"
+	  main="NmmlEdit"
+  />
+
+  <window
+      width="800"
+		height="600"
+		orientation="landscape"
+		fps="24"
+		background="0xffffff"
+      resizeable="true"
+		hardware="true"
+	/>
+
+  <haxelib name="waxe" />
+
+  <ndll name="waxe" haxelib="waxe" />
+  <ndll name="std" />
+  <ndll name="zlib" />
+  <ndll name="regexp" />
+
+</project>
