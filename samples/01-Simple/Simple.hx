@@ -1,5 +1,6 @@
 import wx.EventID;
 import wx.Sizer;
+import wx.App;
 
 class Simple
 {
@@ -49,12 +50,12 @@ class Simple
       mWindow.sizer = vertical_sizer;
 
       mDrawArea.backgroundColour = 0xffffff;
-      close.onClick = function(_) wx.App.quit();
+      close.onClick = function(_) App.quit();
 
       layout();
 
       mDrawArea.onPaint = paintWindow;
-      wx.App.setTopWindow(mFrame);
+      App.setTopWindow(mFrame);
       mFrame.shown = true;
    }
 
@@ -80,6 +81,6 @@ class Simple
 
    public static function main()
    {
-      wx.App.boot(function() { new Simple(); });
+      App.boot(function() { new Simple(); });
    }
 }

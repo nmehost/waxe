@@ -10,6 +10,9 @@
 
 #include <hx/CFFI.h>
 #include "HaxeAPI.h"
+#include "WaxeBinVersion.h"
+#include <WaxeWorksVersion.h>
+
 
 // --- Bootstrap Object ---------------------------
 
@@ -66,6 +69,19 @@ value wx_set_top_window(value inWindow)
    return val_null;
 }
 DEFINE_PRIM(wx_set_top_window,1)
+
+
+value wx_get_ndll_version()
+{
+   return alloc_int( WAXE_BINARY_VERSION );
+}
+DEFINE_PRIM(wx_get_ndll_version,0);
+
+value wx_get_waxe_works_version()
+{
+   return alloc_string( WAXE_WORKS_VERSION );
+}
+DEFINE_PRIM(wx_get_waxe_works_version,0);
 
 
 // Reference this to bring in all the symbols for the static library

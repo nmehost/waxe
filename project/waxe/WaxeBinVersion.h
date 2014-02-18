@@ -1,0 +1,3 @@
+#ifndef WAXE_BINARY_VERSION
+#define WAXE_BINARY_VERSION 0
+#endif
