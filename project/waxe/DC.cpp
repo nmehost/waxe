@@ -140,5 +140,6 @@ DEFINE_PRIM(wx_dc_set_background,2)
 
 
 
+int link_DC() { return 0; }
 
 

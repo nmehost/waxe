@@ -10,4 +10,5 @@ value wx_static_box_create(value inParams)
 }
 DEFINE_PRIM(wx_static_box_create,1)
 
+int link_StaticBox() { return 0; }
 

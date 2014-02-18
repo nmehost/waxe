@@ -48,3 +48,5 @@ value wx_glcanvas_flip(value inCanvas)
 }
 DEFINE_PRIM(wx_glcanvas_flip,1)
 
+int link_GLCanvas() { return 0; }
+

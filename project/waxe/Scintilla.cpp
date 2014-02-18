@@ -36,3 +36,5 @@ DEFINE_PRIM(wx_scintilla_get_value,1)
 
 //WIN_PROPERTY(wx_scintilla,wxStyledTextCtrl,label,GetLabel,SetLabel,Val2Str)
 
+int link_Scintilla() { return 0; }
+

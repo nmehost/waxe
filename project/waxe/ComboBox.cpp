@@ -13,4 +13,5 @@ value wx_combo_box_create(value inParams,value inChoices)
 DEFINE_PRIM(wx_combo_box_create,2)
 
 
+int link_ComboBox() { return 0; }
 

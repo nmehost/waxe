@@ -16,3 +16,5 @@ DEFINE_PRIM(wx_list_box_create,2)
 WIN_PROPERTY(wx_list_box,wxListBox,selection,GetSelection,SetSelection,Val2Int)
 WIN_PROPERTY_IDX(wx_list_box,wxListBox,string,GetString,SetString,Val2Str)
 
+int link_ListBox() { return 0; }
+

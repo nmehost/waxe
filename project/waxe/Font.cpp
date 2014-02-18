@@ -12,4 +12,5 @@ value wx_font_create(value *arg,int n)
 DEFINE_PRIM_MULT(wx_font_create)
 
 
+int link_Font() { return 0; }
 

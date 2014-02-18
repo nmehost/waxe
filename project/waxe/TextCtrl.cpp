@@ -12,3 +12,6 @@ DEFINE_PRIM(wx_text_ctrl_create,1)
 
 
 WIN_PROPERTY(wx_text_ctrl,wxTextCtrl,value,GetValue,SetValue,Val2Str)
+
+int link_TextCtrl() { return 0; }
+

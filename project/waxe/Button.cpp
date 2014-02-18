@@ -13,3 +13,5 @@ DEFINE_PRIM(wx_button_create,1)
 
 WIN_PROPERTY(wx_button,wxButton,label,GetLabel,SetLabel,Val2Str)
 
+int link_Button() { return 0; }
+

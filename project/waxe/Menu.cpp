@@ -64,3 +64,6 @@ value wx_menu_append_separator(value inMenu)
 }
 
 DEFINE_PRIM(wx_menu_append_separator,1)
+
+int link_Menu() { return 0; }
+

@@ -167,4 +167,5 @@ value wx_toolbox_add_tool(value *arg,int argc)
 DEFINE_PRIM_MULT(wx_toolbox_add_tool)
 
 
+int link_Clay() { return 0; }
 

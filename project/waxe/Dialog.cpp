@@ -84,3 +84,5 @@ value wx_dir_dialog_show(value ioData)
 
 DEFINE_PRIM(wx_dir_dialog_show,1)
 
+int link_Dialog() { return 0; }
+

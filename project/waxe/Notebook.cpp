@@ -25,3 +25,6 @@ value wx_notebook_add_page(value inNotebook, value inPage,value inText,value inS
 
 }
 DEFINE_PRIM(wx_notebook_add_page,5)
+
+int link_Notebook() { return 0; }
+

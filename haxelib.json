@@ -1,0 +1,12 @@
+{
+  "name": "waxe",
+  "url": "http://nmehost.com/",
+  "license": "MIT",
+  "tags": ["waxe", "widgets"],
+  "description": "wxWidgets + haxe library.",
+  "version": "3.0.0",
+  "binaryversion": "1",
+  "releasenote": "see Changes.md",
+  "contributors": ["gamehaxe"],
+  "dependencies": {}
+}

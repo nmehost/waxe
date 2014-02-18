@@ -12,3 +12,5 @@ DEFINE_PRIM(wx_checkbox_create,1)
 
 WIN_PROPERTY(wx_checkbox,wxCheckBox,checked,IsChecked,SetValue,Val2Bool)
 
+int link_CheckBox() { return 0; }
+

@@ -23,3 +23,6 @@ value wx_frame_set_menu_bar(value inFrame, value inBar)
    return alloc_null();
 }
 DEFINE_PRIM(wx_frame_set_menu_bar,2)
+
+int link_Frame() { return 0; }
+

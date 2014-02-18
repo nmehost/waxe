@@ -10,3 +10,6 @@ value wx_mdi_parent_frame_create(value inParams)
 }
 
 DEFINE_PRIM(wx_mdi_parent_frame_create,1)
+
+int link_MDI() { return 0; }
+

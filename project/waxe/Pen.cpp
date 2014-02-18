@@ -7,5 +7,6 @@ value wx_pen_create(value inColour,value inWidth, value inPattern)
 }
 DEFINE_PRIM(wx_pen_create,3)
 
+int link_Pen() { return 0; }
 
 

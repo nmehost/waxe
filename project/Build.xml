@@ -1,6 +1,7 @@
 <xml>
 
 <!-- Build file for waxe.ndll -->
+<!-- Install nme-state' -->
 <!-- Install hxcpp and run with 'haxelib run hxcpp Build.xml' -->
 
 <include name="${HXCPP}/build-tool/BuildCommon.xml"/>

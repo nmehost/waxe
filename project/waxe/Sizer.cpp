@@ -149,3 +149,6 @@ value wx_sizer_create_static_box(value inVertical, value inParent, value inTitle
 }
 DEFINE_PRIM(wx_sizer_create_static_box,3)
 
+
+int link_Sizer() { return 0; }
+

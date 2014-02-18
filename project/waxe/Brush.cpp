@@ -7,5 +7,6 @@ value wx_brush_create(value inColour,value inPattern)
 }
 DEFINE_PRIM(wx_brush_create,2)
 
+int link_Brush() { return 0; }
 
 

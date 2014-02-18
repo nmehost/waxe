@@ -12,3 +12,6 @@ DEFINE_PRIM(wx_static_text_create,1)
 
 
 WIN_PROPERTY(wx_static_text,wxStaticText,label,GetLabel,SetLabel,Val2Str)
+
+int link_StaticText() { return 0; }
+

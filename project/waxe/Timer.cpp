@@ -46,3 +46,5 @@ value wx_timer_start(value inTimer, value inMilliSeconds, value inOneShot)
 DEFINE_PRIM(wx_timer_start,3)
 
 
+int link_Timer() { return 0; }
+

@@ -45,3 +45,6 @@ WIN_PROPERTY(wx_window,wxWindow,sizer,GetSizer,SetSizer,Val2Sizer)
 WIN_PROPERTY(wx_window,wxWindow,shown,IsShown,Show,Val2Bool)
 WIN_PROPERTY(wx_window,wxWindow,bg_colour,GetBackgroundColour,SetBackgroundColour,Val2Colour)
 WIN_PROPERTY(wx_window,wxWindow,name,GetName,SetName,Val2Str)
+
+int link_Window() { return 0; }
+

@@ -15,5 +15,5 @@ value wx_bitmap_from_bytes(value inBytes)
 }
 DEFINE_PRIM(wx_bitmap_from_bytes,1)
 
-
+int link_Bitmap() { return 0; }
 

@@ -755,3 +755,5 @@ HaxeData::~HaxeData()
    --handler_count;
 }
 
+int link_HaxeAPI() { return 0; }
+

@@ -10,3 +10,5 @@ value wx_panel_create(value inParams)
 }
 DEFINE_PRIM(wx_panel_create,1)
 
+int link_Panel() { return 0; }
+
