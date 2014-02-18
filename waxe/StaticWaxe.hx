@@ -6,7 +6,7 @@ package waxe;
   <lib name='${haxelib:waxe}/lib/${BINDIR}/libwaxe${LIBEXTRA}${LIBEXT}'/>
   <lib name='${haxelib:waxe-works}/lib/${BINDIR}/libwxwidgets${LIBEXTRA}${LIBEXT}'/>
 </target>
-<include name='${haxelib:waxe}/lib/OsLink.xml'/>
+<include name='${haxelib:waxe}/lib/WaxeLink.xml'/>
 ")
 @:keep class StaticWaxe
 {
