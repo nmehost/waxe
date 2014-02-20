@@ -20,7 +20,7 @@
 <files id="files">
    <!--<compilerflag value = "-Iinclude"/>-->
    <compilerflag value = "-I${WXROOT}/include"/>
-   <compilerflag value = "-Iwaxe"/>
+   <compilerflag value = "-Isrc"/>
    <compilerflag value = "-D_FILE_OFFSET_BITS=64" />
    <compilerflag value = "-D_LARGE_FILES=64" />
    <compilerflag value = "-D__WXOSX_COCOA__" if="macos"/>
@@ -28,39 +28,39 @@
    <compilerflag value = "-D__WXGTK__" if="linux"/>
    <compilerflag value = "-D__WXMSW__" if="windows"/>
 
-   <file name="waxe/App.cpp"/>
-   <file name="waxe/HaxeAPI.cpp"/>
-   <file name="waxe/Window.cpp"/>
-   <file name="waxe/Frame.cpp"/>
-   <file name="waxe/MDI.cpp"/>
-   <file name="waxe/StaticText.cpp"/>
-   <file name="waxe/StaticBox.cpp"/>
-   <file name="waxe/Notebook.cpp"/>
-   <file name="waxe/TextCtrl.cpp"/>
-   <file name="waxe/Sizer.cpp"/>
-   <file name="waxe/Panel.cpp"/>
-   <file name="waxe/Dialog.cpp"/>
-   <file name="waxe/Button.cpp"/>
-   <file name="waxe/ListBox.cpp"/>
-   <file name="waxe/CheckBox.cpp"/>
-   <file name="waxe/ComboBox.cpp"/>
-   <file name="waxe/DC.cpp"/>
-   <file name="waxe/Pen.cpp"/>
-   <file name="waxe/Brush.cpp"/>
-   <file name="waxe/Font.cpp"/>
-   <file name="waxe/Bitmap.cpp"/>
-   <file name="waxe/Menu.cpp"/>
-   <file name="waxe/Scintilla.cpp"/>
-   <file name="waxe/GLCanvas.cpp"/>
-   <file name="waxe/Timer.cpp"/>
+   <file name="src/App.cpp"/>
+   <file name="src/HaxeAPI.cpp"/>
+   <file name="src/Window.cpp"/>
+   <file name="src/Frame.cpp"/>
+   <file name="src/MDI.cpp"/>
+   <file name="src/StaticText.cpp"/>
+   <file name="src/StaticBox.cpp"/>
+   <file name="src/Notebook.cpp"/>
+   <file name="src/TextCtrl.cpp"/>
+   <file name="src/Sizer.cpp"/>
+   <file name="src/Panel.cpp"/>
+   <file name="src/Dialog.cpp"/>
+   <file name="src/Button.cpp"/>
+   <file name="src/ListBox.cpp"/>
+   <file name="src/CheckBox.cpp"/>
+   <file name="src/ComboBox.cpp"/>
+   <file name="src/DC.cpp"/>
+   <file name="src/Pen.cpp"/>
+   <file name="src/Brush.cpp"/>
+   <file name="src/Font.cpp"/>
+   <file name="src/Bitmap.cpp"/>
+   <file name="src/Menu.cpp"/>
+   <file name="src/Scintilla.cpp"/>
+   <file name="src/GLCanvas.cpp"/>
+   <file name="src/Timer.cpp"/>
 
-   <file name="waxe/Clay.cpp"/>
-   <file name="waxe/clay/Container.cpp"/>
-   <file name="waxe/clay/HintWindow.cpp"/>
-   <file name="waxe/clay/Manager.cpp"/>
-   <file name="waxe/clay/Serializer.cpp"/>
-   <file name="waxe/clay/Skin.cpp"/>
-   <file name="waxe/clay/ToolBox.cpp"/>
+   <file name="src/Clay.cpp"/>
+   <file name="src/clay/Container.cpp"/>
+   <file name="src/clay/HintWindow.cpp"/>
+   <file name="src/clay/Manager.cpp"/>
+   <file name="src/clay/Serializer.cpp"/>
+   <file name="src/clay/Skin.cpp"/>
+   <file name="src/clay/ToolBox.cpp"/>
 
 
 </files>
