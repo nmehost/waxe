@@ -22,8 +22,6 @@
    <!--<icon name="../icon.svg" />-->
 
 
-  <haxelib name="waxe" />
-
   <ndll name="waxe" haxelib="waxe" />
   <ndll name="std" />
   <ndll name="zlib" />

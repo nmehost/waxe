@@ -757,3 +757,70 @@ HaxeData::~HaxeData()
 
 int link_HaxeAPI() { return 0; }
 
+
+
+
+// Reference this to bring in all the symbols for the static library
+int link_App();
+int link_Bitmap();
+int link_Brush();
+int link_Button();
+int link_CheckBox();
+int link_Clay();
+int link_ComboBox();
+int link_DC();
+int link_Dialog();
+int link_Font();
+int link_Frame();
+int link_GLCanvas();
+int link_HaxeAPI();
+int link_ListBox();
+int link_MDI();
+int link_Menu();
+int link_Notebook();
+int link_Panel();
+int link_Pen();
+int link_Scintilla();
+int link_Sizer();
+int link_StaticBox();
+int link_StaticText();
+int link_TextCtrl();
+int link_Timer();
+int link_Window();
+
+
+extern "C" int waxe_register_prims()
+{
+   InitCFFI();
+
+   #ifdef STATIC_LINK
+   link_App();
+   link_Bitmap();
+   link_Brush();
+   link_Button();
+   link_CheckBox();
+   link_Clay();
+   link_ComboBox();
+   link_DC();
+   link_Dialog();
+   link_Font();
+   link_Frame();
+   link_GLCanvas();
+   link_HaxeAPI();
+   link_ListBox();
+   link_MDI();
+   link_Menu();
+   link_Notebook();
+   link_Panel();
+   link_Pen();
+   link_Scintilla();
+   link_Sizer();
+   link_StaticBox();
+   link_StaticText();
+   link_TextCtrl();
+   link_Timer();
+   link_Window();
+   #endif
+   return 0;
+}
+
