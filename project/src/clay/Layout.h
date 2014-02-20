@@ -146,6 +146,8 @@ public:
 
    virtual void Render(wxDC &inDC,Skin *inSkin) = 0;
 
+   void CriticalError();
+
    wxClientDataContainer mData;
    Manager *mManager;
    wxSize  mSizes[stSIZE];

@@ -3,23 +3,25 @@
 
 
       <section if="linux">
-         <lib name="${WXLIB}/libwx_baseu-2.9.a" if="linux"/>
-         <lib name="${WXLIB}/libwx_gtk2u_core-2.9.a" if="linux"/>
-         <lib name="${WXLIB}/libwx_gtk2u_gl-2.9.a" if="linux"/>
-         <lib name="${WXLIB}/libwx_baseu-2.9.a" if="linux"/>
-         <lib name="${WXLIB}/libwx_gtk2u_stc-2.9.a" if="linux"/>
-         <lib name="${WXLIB}/libwx_gtk2u_core-2.9.a" if="linux"/>
-         <lib name="-lgtk-x11-2.0" if="linux"/>
-         <lib name="-lglib-2.0" if="linux"/>
-         <lib name="-lgobject-2.0" if="linux"/>
-         <lib name="-lgdk-x11-2.0" if="linux"/>
-         <lib name="-lgdk_pixbuf-2.0" if="linux"/>
-         <lib name="-lcairo" if="linux"/>
-         <lib name="-lpango-1.0" if="linux"/>
-         <lib name="-lpangocairo-1.0" if="linux"/>
-         <lib name="-lgthread-2.0" if="linux"/>
-         <lib name="-lGL" if="linux"/>
-         <lib name="-lX11" if="linux"/>
+         <lib name="-L${HXCPP}/lib/${BINDIR}" />
+         <lib name="-llinuxcompat" />
+         <lib name="${WXLIB}/libwx_baseu-2.9.a" />
+         <lib name="${WXLIB}/libwx_gtk2u_core-2.9.a" />
+         <lib name="${WXLIB}/libwx_gtk2u_gl-2.9.a" />
+         <lib name="${WXLIB}/libwx_baseu-2.9.a" />
+         <lib name="${WXLIB}/libwx_gtk2u_stc-2.9.a" />
+         <lib name="${WXLIB}/libwx_gtk2u_core-2.9.a" />
+         <lib name="-lgtk-x11-2.0" />
+         <lib name="-lglib-2.0" />
+         <lib name="-lgobject-2.0" />
+         <lib name="-lgdk-x11-2.0" />
+         <lib name="-lgdk_pixbuf-2.0" />
+         <lib name="-lcairo" />
+         <lib name="-lpango-1.0" />
+         <lib name="-lpangocairo-1.0" />
+         <lib name="-lgthread-2.0" />
+         <lib name="-lGL" />
+         <lib name="-lX11" />
       </section>
    
    

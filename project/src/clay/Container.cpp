@@ -30,6 +30,19 @@ static wxRect RectClientToScreen(wxWindow *inParent,const wxRect &inRect)
 static int sUID = 1;
 std::list<int> sFreeUID;
 
+void Container::CriticalError()
+{
+   #ifndef __has_builtin
+   #define __has_builtin(x) 0
+   #endif
+
+    #if __has_builtin(__builtin_trap)
+    __builtin_trap();
+    #else
+    (* (int *) 0) = 0;
+    #endif
+}
+
 Container::Container(Manager *inManager) : mManager(inManager)
 {
     if (sFreeUID.empty())
@@ -165,7 +178,7 @@ Container *Container::Add(Container *inContainer,AddPosition inWhere)
 {
    Container *parent = GetParent();
    if (!parent)
-      *(int *)0=0;
+      CriticalError();
 
    if (parent->CanAddChild(inWhere))
       return parent->Insert(inContainer,this,inWhere);
@@ -454,7 +467,7 @@ public:
                          AddPosition inWhere)
    {
       if (mChild!=0)
-         *(int *)0=0;
+         CriticalError();
       return Add(inContainer,inWhere);
    }
 
@@ -505,10 +518,10 @@ public:
    virtual bool CanAddChild()  { return true; }
 
 
-   void Reparent(Container *inContainer) { *(int *)0=0; }
+   void Reparent(Container *inContainer) { CriticalError(); }
    Container *GetParent() { return 0; }
 
-   void Show(bool inShow) { *(int *)0=0; }
+   void Show(bool inShow) { CriticalError(); }
    void SetRect(const wxRect &inRect) { mFrame->SetSize(inRect); }
    wxRect Rect() { return wxRect(wxPoint(0,0),mFrame->GetClientSize());}
 
@@ -1168,13 +1181,13 @@ public:
 
    void ReplaceChild(Container *inContainer,Container *inNew)
    {
-      *(int *)0=0;
+      CriticalError();
    }
 
    Container *Insert(Container *inContainer,Container *inSibling,
                          AddPosition inWhere)
    {
-      *(int *)0=0;
+      CriticalError();
       return 0;
    }
 
@@ -1824,7 +1837,7 @@ public:
       else if (inWhere==apRight || inWhere==apBelow)
          mChildren.push_back(inContainer);
       else
-         *(int *)0=0;
+         CriticalError();
 
       inContainer->Reparent(this);
 
@@ -1892,7 +1905,7 @@ public:
                 (inDirection==apAbove  || inDirection==apBelow) ;
 
       if (!compatible)
-         *(int *)0=0;
+         CriticalError();
 
       for(int i=0;i<mChildren.size();i++)
       {
@@ -1917,7 +1930,7 @@ public:
          }
       }
 
-      *(int *)0=0;
+      CriticalError();
       return 0;
    }
 
@@ -2794,7 +2807,7 @@ public:
       else if (inWhere==apOver)
          super::mChildren.push_back(inContainer);
       else
-         *(int *)0=0;
+         CriticalError();
 
       inContainer->Reparent(this);
       UpdateMinSize();
@@ -2871,7 +2884,7 @@ public:
             DoLayout();
             return inContainer;
          }
-      *(int *)0=0;
+      CriticalError();
       return 0;
    }
 
@@ -3124,7 +3137,7 @@ public:
 
    void ReplaceChild(Container *inContainer,Container *inNew=0)
    {
-      *(int *)0=0;
+      CriticalError();
    }
 
    int HitRect(wxMouseEvent &inEvent)
@@ -3139,7 +3152,7 @@ public:
 
    void DoOverwriteChild(int inI, Container *inNew)
    {
-      *(int *)0=0;
+      CriticalError();
       // super::mChildren[i] = inNew;
    }
 
@@ -3181,7 +3194,7 @@ public:
    Container *Insert(Container *inContainer,Container *inSibling,
                          AddPosition inWhere)
    {
-      *(int *)0=0;
+      CriticalError();
       // TODO
       return 0;
    }

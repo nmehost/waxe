@@ -15,11 +15,10 @@
 <set name="LIB_DIR" value="-L${WXLIB}" unless="windows"/>
 <set name="LIB_DIR" value="-libpath:${WXLIB}" if="windows"/>
 
-<!-- <set name="LIB_DIR" value="-L../../wxwidgets-static/lib" unless="windows"/> -->
-
 <files id="files">
    <!--<compilerflag value = "-Iinclude"/>-->
    <compilerflag value = "-I${WXROOT}/include"/>
+   <compilerflag value = "-I${WXROOT}/include/xcompile" if="linux" />
    <compilerflag value = "-Isrc"/>
    <compilerflag value = "-D_FILE_OFFSET_BITS=64" />
    <compilerflag value = "-D_LARGE_FILES=64" />
@@ -70,15 +69,16 @@
 <target id="waxe.ndll" tool="linker" toolid="${STD_MODULE_LINK}" output="${LIBPREFIX}waxe${MSVC_LIB_VERSION}${LIBEXTRA}">
    <files id="files"/>
    <outdir name="../${NDLLDIR}/${BINDIR}"/>
-   <flag value="${LIB_DIR}"/>
 
    <section unless="static_link">
+      <flag value="${LIB_DIR}"/>
       <lib name="${WXLIB}/libwxwidgets{MSVC_VER}.lib" if="windows"/>
       <lib name="-lwxwidgets" unless="windows"/>
       <ext value=".ndll"/>
 
       <section if="linux">
          <lib name="-L${WXLIB}/${BINDIR}" />
+         <lib name="${HXCPP}/lib/${BINDIR}/liblinuxcompat.a" />
          <lib name="-lgtk-x11-2.0" />
          <lib name="-lglib-2.0" />
          <lib name="-lgobject-2.0" />
