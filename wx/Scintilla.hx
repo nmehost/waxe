@@ -4,7 +4,7 @@ import wx.Window;
 
 class Scintilla extends Window
 {
-   public var value(getValue,setValue):String;
+   public var value(get,set):String;
 
    public static function create(inParent:Window, ?inID:Null<Int>,
                    ?inPosition:Position,
@@ -22,17 +22,17 @@ class Scintilla extends Window
       super(inHandle);
    }
 
-   public function setValue(inString:String) : String
+   public function set_value(inString:String) : String
    {
       wx_scintilla_set_value(wxHandle,inString);
       return inString;
    }
-   public function getValue() : String
+   public function get_value() : String
    {
       return wx_scintilla_get_value(wxHandle);
    }
 
-   static var wx_scintilla_create = Loader.load("wx_scintilla_create",1);
+   static var wx_scintilla_create:Array<Dynamic>->Dynamic = Loader.load("wx_scintilla_create",1);
    static var wx_scintilla_get_value = Loader.load("wx_scintilla_get_value",1);
    static var wx_scintilla_set_value = Loader.load("wx_scintilla_set_value",2);
 }
