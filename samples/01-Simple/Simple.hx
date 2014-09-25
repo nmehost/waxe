@@ -1,6 +1,8 @@
 import wx.EventID;
 import wx.Sizer;
 import wx.App;
+import wx.MenuBar;
+import wx.Menu;
 
 class Simple
 {
@@ -48,6 +50,19 @@ class Simple
 
 
       mWindow.sizer = vertical_sizer;
+
+      /*
+       * adding menubar for test purposes
+       */
+      var menu_bar = new wx.MenuBar();
+      var file_menu = new wx.Menu();
+      file_menu.append(1, "Open File");
+      // make sure the About menu is correctly handled on OSX
+      file_menu.append(App.s_macAboutMenuItemId, "About Simple.hx");
+      // on OSX, never append or set the menubar before it is completed
+      menu_bar.append(file_menu, "File");
+      // attach the menubar to the application
+      mFrame.menuBar = menu_bar;
 
       mDrawArea.backgroundColour = 0xffffff;
       close.onClick = function(_) App.quit();

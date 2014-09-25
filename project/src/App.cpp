@@ -83,6 +83,22 @@ value wx_get_waxe_works_version()
 }
 DEFINE_PRIM(wx_get_waxe_works_version,0);
 
+/*
+ * Allow access to wxApp::s_macAboutMenuItemId
+ * Needed for correct placement of the OSX About menu
+ */
+value wx_get_s_macAboutMenuItemId()
+{
+  return alloc_int( wxTheApp->s_macAboutMenuItemId );
+}
+DEFINE_PRIM(wx_get_s_macAboutMenuItemId,0);
+
+value wx_set_s_macAboutMenuItemId(value inID)
+{
+  wxTheApp->s_macAboutMenuItemId = val_int(inID);
+  return val_null;
+}
+DEFINE_PRIM(wx_set_s_macAboutMenuItemId,1);
 
 int link_App() { return 0; }
 
