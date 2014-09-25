@@ -100,6 +100,23 @@ value wx_set_s_macAboutMenuItemId(value inID)
 }
 DEFINE_PRIM(wx_set_s_macAboutMenuItemId,1);
 
+/*
+ * Allow access to wxApp::s_macPreferencesMenuItemId
+ * Needed for correct placement of the OSX Preferences menu
+ */
+value wx_get_s_macPreferencesMenuItemId()
+{
+  return alloc_int( wxTheApp->s_macPreferencesMenuItemId );
+}
+DEFINE_PRIM(wx_get_s_macPreferencesMenuItemId,0);
+
+value wx_set_s_macPreferencesMenuItemId(value inID)
+{
+  wxTheApp->s_macPreferencesMenuItemId = val_int(inID);
+  return val_null;
+}
+DEFINE_PRIM(wx_set_s_macPreferencesMenuItemId,1);
+
 int link_App() { return 0; }
 
 
