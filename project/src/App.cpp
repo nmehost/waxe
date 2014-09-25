@@ -117,6 +117,23 @@ value wx_set_s_macPreferencesMenuItemId(value inID)
 }
 DEFINE_PRIM(wx_set_s_macPreferencesMenuItemId,1);
 
+/*
+ * Allow access to wxApp::s_macExitMenuItemId
+ * Needed for correct placement of the OSX Exit menu
+ */
+value wx_get_s_macExitMenuItemId()
+{
+  return alloc_int( wxTheApp->s_macExitMenuItemId );
+}
+DEFINE_PRIM(wx_get_s_macExitMenuItemId,0);
+
+value wx_set_s_macExitMenuItemId(value inID)
+{
+  wxTheApp->s_macExitMenuItemId = val_int(inID);
+  return val_null;
+}
+DEFINE_PRIM(wx_set_s_macExitMenuItemId,1);
+
 int link_App() { return 0; }
 
 

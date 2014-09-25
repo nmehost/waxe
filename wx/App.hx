@@ -15,6 +15,11 @@ class App
     * Needed for correct placement of the OSX Preferences menu
     */
    static public var s_macPreferencesMenuItemId(get, set) : Int;
+   /*
+    * Allow access to wxApp::s_macExitMenuItemId
+    * Needed for correct placement of the OSX Exit menu
+    */
+   static public var s_macExitMenuItemId(get, set) : Int;
 
 
    public static function boot(inOnInit:Void -> Void)
@@ -69,6 +74,16 @@ class App
       return inID;
    }
 
+   static public function get_s_macExitMenuItemId() : Int
+   {
+      return wx_get_s_macExitMenuItemId();
+   }
+   static public function set_s_macExitMenuItemId(inID:Int) : Int
+   {
+      wx_set_s_macExitMenuItemId(inID);
+      return inID;
+   }
+
    static var wx_set_top_window = Loader.load("wx_set_top_window",1);
    static var wx_boot = Loader.load("wx_boot",1);
    static var wx_quit = Loader.load("wx_quit",0);
@@ -78,4 +93,6 @@ class App
    static var wx_set_s_macAboutMenuItemId = Loader.load("wx_set_s_macAboutMenuItemId", 1);
    static var wx_get_s_macPreferencesMenuItemId = Loader.load("wx_get_s_macPreferencesMenuItemId", 0);
    static var wx_set_s_macPreferencesMenuItemId = Loader.load("wx_set_s_macPreferencesMenuItemId", 1);
+   static var wx_get_s_macExitMenuItemId = Loader.load("wx_get_s_macExitMenuItemId", 0);
+   static var wx_set_s_macExitMenuItemId = Loader.load("wx_set_s_macExitMenuItemId", 1);
 }
