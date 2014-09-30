@@ -89,13 +89,19 @@ DEFINE_PRIM(wx_get_waxe_works_version,0);
  */
 value wx_get_s_macAboutMenuItemId()
 {
+#ifdef __WXMAC__
   return alloc_int( wxTheApp->s_macAboutMenuItemId );
+#else
+  return 0;
+#endif
 }
 DEFINE_PRIM(wx_get_s_macAboutMenuItemId,0);
 
 value wx_set_s_macAboutMenuItemId(value inID)
 {
+#ifdef __WXMAC__
   wxTheApp->s_macAboutMenuItemId = val_int(inID);
+#endif
   return val_null;
 }
 DEFINE_PRIM(wx_set_s_macAboutMenuItemId,1);
@@ -106,13 +112,19 @@ DEFINE_PRIM(wx_set_s_macAboutMenuItemId,1);
  */
 value wx_get_s_macPreferencesMenuItemId()
 {
+#ifdef __WXMAC__
   return alloc_int( wxTheApp->s_macPreferencesMenuItemId );
+#else
+  return 0;
+#endif
 }
 DEFINE_PRIM(wx_get_s_macPreferencesMenuItemId,0);
 
 value wx_set_s_macPreferencesMenuItemId(value inID)
 {
+#ifdef __WXMAC__
   wxTheApp->s_macPreferencesMenuItemId = val_int(inID);
+#endif
   return val_null;
 }
 DEFINE_PRIM(wx_set_s_macPreferencesMenuItemId,1);
@@ -123,13 +135,19 @@ DEFINE_PRIM(wx_set_s_macPreferencesMenuItemId,1);
  */
 value wx_get_s_macExitMenuItemId()
 {
+#ifdef __WXMAC__
   return alloc_int( wxTheApp->s_macExitMenuItemId );
+#else
+  return 0;
+#endif
 }
 DEFINE_PRIM(wx_get_s_macExitMenuItemId,0);
 
 value wx_set_s_macExitMenuItemId(value inID)
 {
+#ifdef __WXMAC__
   wxTheApp->s_macExitMenuItemId = val_int(inID);
+#endif
   return val_null;
 }
 DEFINE_PRIM(wx_set_s_macExitMenuItemId,1);
