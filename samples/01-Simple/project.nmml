@@ -2,12 +2,12 @@
 <project>
 
   <app
-     file="Simple01"
-     title="Simple01"
-     package="org.haxe.waxe.Simple01"
+     file="Main"
+     title="Main"
+     package="org.haxe.waxe.Main"
      version="1.0"
      company="waxe" 
-     main="Simple"
+     main="Main"
   />
 
   <window
