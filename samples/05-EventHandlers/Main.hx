@@ -17,7 +17,7 @@ class Main
 	{
 		this.frame = wx.Frame.create(null, null, "This is a Frame", null, { width: 800, height: 600 });
 		this.textCtrl = TextCtrl.create(frame, null, 'Type something here', {x:20, y:40}, {width:200, height:22});
-		this.staticText = StaticText.create(frame, null, 'StaticText', {x:20, y: 80});
+		this.staticText = StaticText.create(frame, null, 'StaticText', { x:20, y: 80 } );
 		
 		this.textCtrl.onTextUpdated = function(e) {
 			staticText.label = textCtrl.value;

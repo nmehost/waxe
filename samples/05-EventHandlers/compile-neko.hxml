@@ -1,3 +1,4 @@
 -main Main
 -cp ../..
--cpp bin/cpp/
+-neko Main.n
+
