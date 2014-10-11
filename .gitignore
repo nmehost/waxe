@@ -5,6 +5,12 @@ lib/*
 samples/01-Simple/bin/*
 samples/01-Simple/waxe.ndll
 
+samples/02-Dialog/bin/*
+samples/02-Dialog/waxe.ndll
+
+samples/03-NME/bin/*
+samples/03-NME/waxe.ndll
+
 samples/04-EventHandlers/bin/*
 samples/04-EventHandlers/waxe.ndll
 
