@@ -84,5 +84,33 @@ value wx_dir_dialog_show(value ioData)
 
 DEFINE_PRIM(wx_dir_dialog_show,1)
 
+
+
+//-------------------------------------------------------------------------------------------------------------------
+// wxMessageDialog implemetation, added to /haxe/lib/waxe/1.0.1/src/waxe/Dialog.cpp
+value wx_message_dialog_show(value ioData)
+{
+    wxWindow *parent = 0;
+    wxString message;
+    wxString caption;
+    int style;
+ 
+    ValueToWX(val_field(ioData,val_id("parent")),parent);
+    ValueToWX(val_field(ioData,val_id("message")),message);
+    ValueToWX(val_field(ioData,val_id("caption")),caption);
+    ValueToWX(val_field(ioData,val_id("style")),style);
+ 
+    wxMessageDialog *dlg = new wxMessageDialog(parent,message, caption, style);
+    int result = dlg->ShowModal();
+ 
+    dlg->Destroy();
+ 
+   return alloc_int(result);
+}
+ 
+DEFINE_PRIM(wx_message_dialog_show,1)
+
+
+
 int link_Dialog() { return 0; }
 

@@ -1,6 +1,7 @@
 import wx.EventID;
 import wx.Sizer;
 import wx.App;
+import wx.MessageDialog;
 
 class Simple
 {
@@ -14,6 +15,9 @@ class Simple
 
       mFrame.onSize = function(evt) { layout(); evt.skip=true; }
 
+      new wx.MessageDialog(null, 'Hello world!', 'Message caption').showModal();
+      
+      
       mWindow = wx.Panel.create(mFrame);
       mDrawArea = wx.Panel.create(mWindow);
 
