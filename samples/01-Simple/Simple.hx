@@ -1,7 +1,7 @@
 import wx.EventID;
 import wx.Sizer;
 import wx.App;
-import wx.MessageDialog;
+//import wx.MessageDialog;
 
 class Simple
 {
@@ -15,46 +15,60 @@ class Simple
 
       mFrame.onSize = function(evt) { layout(); evt.skip=true; }
 
-      new wx.MessageDialog(null, 'Hello world!', 'Message caption').showModal();
+     // new wx.MessageDialog(null, 'Hello world!', 'Message caption').showModal();
       
       
       mWindow = wx.Panel.create(mFrame);
       mDrawArea = wx.Panel.create(mWindow);
 
 
-      var vertical_sizer = wx.FlexGridSizer.create(null,1);
-      vertical_sizer.addGrowableCol(0);
-      var items_sizer = wx.FlexGridSizer.create(null,2);
-      var button_sizer = wx.BoxSizer.create(false);
-      vertical_sizer.add(items_sizer,0,Sizer.EXPAND);
-      vertical_sizer.add(mDrawArea,1,Sizer.EXPAND);
+      var sizerVertical = wx.FlexGridSizer.create(null,1);
+      sizerVertical.addGrowableCol(0);
+      var sizerItems = wx.FlexGridSizer.create(null,2);
+      var sizerButton = wx.BoxSizer.create(false);
+      sizerVertical.add(sizerItems,0,Sizer.EXPAND);
+      sizerVertical.add(mDrawArea,1,Sizer.EXPAND);
       //var scintilla = wx.Scintilla.create(mWindow,null);
       //vertical_sizer.add(scintilla,1,Sizer.EXPAND);
-      vertical_sizer.add(button_sizer,0,
+      sizerVertical.add(sizerButton,0,
          Sizer.ALIGN_CENTRE | Sizer.BORDER_TOP | Sizer.BORDER_BOTTOM, 10);
-      vertical_sizer.addGrowableRow(1);
-      var close = wx.Button.create(mWindow,null,"Close");
-      button_sizer.add(close);
+      sizerVertical.addGrowableRow(1);
+      var btnClose = wx.Button.create(mWindow,null,"Close");
+      sizerButton.add(btnClose);
+	btnClose.onClick = function(_) App.quit();
 
+      sizerItems.addGrowableCol(1,1);
+      sizerItems.add(wx.StaticText.create(mWindow, null, "TextCtrl"), 0, Sizer.ALIGN_CENTRE_VERTICAL);
+      
+      var textCtrl = wx.TextCtrl.create(mWindow,null,"Here is some text" );
+      sizerItems.add(textCtrl,1,Sizer.EXPAND | Sizer.BORDER_ALL, 10);
+     
 
-      items_sizer.addGrowableCol(1,1);
-      items_sizer.add(wx.StaticText.create(mWindow,null,"TextCtrl"),0,Sizer.ALIGN_CENTRE_VERTICAL);
-      var text = wx.TextCtrl.create(mWindow,null,"Here is some text" );
-      items_sizer.add(text,1,Sizer.EXPAND | Sizer.BORDER_ALL, 10);
-
-      items_sizer.add(wx.StaticText.create(mWindow,null,"ComboBox"),0,Sizer.ALIGN_CENTRE_VERTICAL);
+      sizerItems.add( wx.StaticText.create(mWindow, null, "ComboBox"), 0, Sizer.ALIGN_CENTRE_VERTICAL);
+      
+      
       var combo = wx.ComboBox.create(mWindow,null,"Some Text", ["Choice 1","Choice 2"]);
-      items_sizer.add(combo,1,Sizer.EXPAND | Sizer.BORDER_ALL, 10);
+      sizerItems.add(combo,1,Sizer.EXPAND | Sizer.BORDER_ALL, 10);
 
-      items_sizer.add(wx.StaticText.create(mWindow,null,"Text 3"),0,Sizer.ALIGN_CENTRE_VERTICAL);
-      var text = wx.TextCtrl.create(mWindow,null,"Hello !" );
-      items_sizer.add(text,1,Sizer.EXPAND | Sizer.BORDER_ALL, 10);
+      sizerItems.add(wx.StaticText.create(mWindow,null,"Text 3"),0,Sizer.ALIGN_CENTRE_VERTICAL);
+      
+      var textCtrl = wx.TextCtrl.create(mWindow,null,"Type something here..." );
+      sizerItems.add(textCtrl, 1, Sizer.EXPAND | Sizer.BORDER_ALL, 10);
+      
+        sizerItems.add(wx.StaticText.create(mWindow, null, "StaticText"), 0, Sizer.ALIGN_CENTRE_VERTICAL);
+        
+      var staticText = wx.StaticText.create(mWindow, null, "StaticText");
+      sizerItems.add(staticText, 1,  Sizer.EXPAND | Sizer.BORDER_ALL, 10);
 
+	textCtrl.onTextUpdated = function(_) {
+		staticText.label = textCtrl.value;
+	}
+      
 
-      mWindow.sizer = vertical_sizer;
+      mWindow.sizer = sizerVertical;
 
       mDrawArea.backgroundColour = 0xffffff;
-      close.onClick = function(_) App.quit();
+     
 
       layout();
 

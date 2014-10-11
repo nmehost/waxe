@@ -1,0 +1,16 @@
+-main ApplicationMain 
+-lib waxe
+-lib nme
+-lib hxcpp
+-cp bin/windows-neko/haxe
+-D no_console=1
+-D nme5=1
+-D nme_ver=5.1.8
+-D openfl=nme
+-D nme_install_tool=1
+-D windows
+-D desktop
+--remap flash:nme
+--remap lime:nme
+-neko bin/windows-neko/haxe/ApplicationMain.n
+--remap openfl:nme

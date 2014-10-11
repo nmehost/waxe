@@ -4,7 +4,9 @@ import wx.Window;
 
 class TextCtrl extends Window
 {
-	public var value(get,set):String;
+	public var value(get, set):String;
+	
+	public var onTextUpdated(null,set) : Dynamic->Void;	
 
    public static function create(inParent:Window, ?inID:Null<Int>, inText:String="",
 	                ?inPosition:Position,
@@ -36,5 +38,10 @@ class TextCtrl extends Window
 
    static var wx_text_ctrl_create:Array<Dynamic>->Dynamic = Loader.load("wx_text_ctrl_create",1);
    static var wx_text_ctrl_get_value = Loader.load("wx_text_ctrl_get_value",1);
-   static var wx_text_ctrl_set_value = Loader.load("wx_text_ctrl_set_value",2);
+   static var wx_text_ctrl_set_value = Loader.load("wx_text_ctrl_set_value", 2);
+   
+   
+	function set_onTextUpdated(f:Dynamic->Void)
+	   {setHandler(wx.EventID.COMMAND_TEXT_UPDATED,f); return f;}   
+   
 }

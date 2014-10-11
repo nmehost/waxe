@@ -1,5 +1,13 @@
 ndll/*
-samples/01-Simple/bin/*
-samples/01-Simple/waxe.ndll
 project/obj/*
 lib/*
+
+samples/01-Simple/bin/*
+samples/01-Simple/waxe.ndll
+
+samples/04-EventHandlers/bin/*
+samples/04-EventHandlers/waxe.ndll
+
+samples/05-MessageBox/bin/*
+samples/05-MessageBox/waxe.ndll
+
