@@ -1,4 +1,5 @@
 ndll/*
 samples/01-Simple/bin/*
+samples/01-Simple/waxe.ndll
 project/obj/*
 lib/*
