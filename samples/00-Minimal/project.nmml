@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+  <app
+     file="HelloWaxe"
+     title="HelloWaxe"
+     package="org.haxe.waxe.HelloWaxe"
+     version="1.0"
+     company="waxe" 
+	main="Main"
+  />
+
+  <window
+      width="800"
+		height="600"
+		orientation="landscape"
+		fps="24"
+		background="0xffffff"
+		hardware="true"
+	/>
+
+   <!--<icon name="../icon.svg" />-->
+
+
+  <ndll name="waxe" haxelib="waxe" />
+  <ndll name="std" />
+  <ndll name="zlib" />
+  <ndll name="regexp" />
+
+</project>
