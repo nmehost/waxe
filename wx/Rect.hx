@@ -35,7 +35,7 @@ class Rect
    function get_topLeft() { return new Point(x,y); }
    function set_topLeft(p:Point) { x=p.x;y=p.y; return p.clone(); }
 
-   public var size(get_topLeft,set_topLeft) : Point;
+   public var size(get_size,set_size) : Point;
    function get_size() { return new Point(width,height); }
    function set_size(p:Point) { width=p.x;height=p.y; return p.clone(); }
 
