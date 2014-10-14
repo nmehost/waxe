@@ -1,0 +1,3 @@
+-main Main
+-cp ../..
+-cpp bin/cpp/
