@@ -64,7 +64,7 @@
 
 </files>
 
-<set name="NO_AUTO_MSVC" value="1" />
+<!--<set name="NO_AUTO_MSVC" value="1" />-->
 
 <target id="waxe.ndll" tool="linker" toolid="${STD_MODULE_LINK}" output="${LIBPREFIX}waxe${MSVC_LIB_VERSION}${LIBEXTRA}">
    <files id="files"/>
