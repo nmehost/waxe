@@ -18,14 +18,15 @@ class NMEStage extends GLCanvas
       mLastValue = 0;
       stage = nme.Lib.createManagedStage(inWidth,inHeight);
       stage.onQuit = App.quit;
-      stage.beginRender = me.makeCurrent;
-      stage.endRender = me.flip;
       stage.setNextWake = me.setNextWake;
       stage.renderRequest = me.refresh;
       onSize = myOnSize;
-      //onPaint = render;
-      setHandler(wx.EventID.PAINT, me.render);
+
+      // Must use proper paint handler, or opengl will not work
+      //setHandler(wx.EventID.PAINT, me.render);
+      onPaint = render;
       mTimer = new Timer(this);
+      stage.window.nextWakeHandler = setNextWake;
       setNextWake(1);
    }
 
@@ -111,7 +112,11 @@ class NMEStage extends GLCanvas
 
    function render(_)
    {
-      stage.nmeRender(true);
+      makeCurrent();
+      stage.window.beginRender();
+      stage.onRender(true);
+      stage.window.endRender();
+      flip();
    }
 
    public static function create(inParent:Window,?inID:Int,?inPosition:Position,
@@ -123,7 +128,7 @@ class NMEStage extends GLCanvas
       var w:Int = inSize==null ? -1 : inSize.width;
       var h:Int = inSize==null ? -1 : inSize.height;
       var stage = new NMEStage(handle,w,h);
-      stage.myOnSize(null);
+      //stage.myOnSize(null);
       return stage;
    }
 
