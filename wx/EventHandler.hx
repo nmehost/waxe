@@ -1,5 +1,7 @@
 package wx;
 
+import haxe.CallStack;
+
 class EventHandler
 {
    public var wxHandle:Dynamic;
@@ -13,7 +15,20 @@ class EventHandler
 
    // These two functions are called by the external DLL...
    function _wx_deleted() { wxHandle = null; }
-   function _handle_event(event:Dynamic) { HandleEvent(event); }
+   function _handle_event(event:Dynamic)
+   {
+      try
+      {
+         HandleEvent(event);
+      }
+      catch(exception:Dynamic)
+      {
+         var stack = CallStack.exceptionStack();
+         trace("Exception: " + exception+"\n" + CallStack.toString(stack));
+         trace("\n\n\n===Terminating===\n.");
+         throw "Unhandled exception:" + exception;
+      }
+   }
 
    /*
 	  All events have these fields:

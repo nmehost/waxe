@@ -96,6 +96,10 @@ class NMEStage extends GLCanvas
          case EventID.KEY_UP:
             event.code = mLastValue;
             pumpKeyEvent(ManagedStage.etKeyUp,event); 
+         case EventID.IDLE:
+            if (stage.isDisplayListDirty())
+               stage.window.onInvalidFrame();
+            stage.pumpEvent({type:ManagedStage.etPoll});
          case EventID.TIMER:
             stage.pumpEvent({type:ManagedStage.etPoll});
 
@@ -105,6 +109,8 @@ class NMEStage extends GLCanvas
 
    function setNextWake(inDelay:Float)
    {
+      if (inDelay>2000000)
+         inDelay = 2000000;
       var start = Std.int(inDelay*1000);
       if (start<=1) start = 1;
       mTimer.start(start , true );
