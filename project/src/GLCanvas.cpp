@@ -31,7 +31,7 @@ value wx_glcanvas_make_current(value inCanvas)
          sgContext = new wxGLContext(canvas, (wxGLContext *)0);
 
       #ifdef HX_WINDOWS
-      wglMakeCurrent(window->GetHDC(),sgContext->GetGLRC());
+      wglMakeCurrent(canvas->GetHDC(),sgContext->GetGLRC());
       #endif
 
 		canvas->SetCurrent(*sgContext);
