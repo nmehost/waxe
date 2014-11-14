@@ -11,11 +11,22 @@ value wx_glcanvas_create(value inParams)
     wxGLCanvas *window = new wxGLCanvas(params.parent,params.id, attrs,
 			  params.position,params.size,params.flags);
 
+      #ifdef HX_WINDOWS
+      if (sgContext==0)
+         sgContext = new wxGLContext(window, (wxGLContext *)0);
+
+
+      wglMakeCurrent(window->GetHDC(),sgContext->GetGLRC());
+/*
+      TODO - still some issues here
+
     // Hack to fake a resize to get wxwindows to render before a reszie
-    //int x,y;
-    //window->GetParent()->GetSize(&x, &y);
-    //window->GetParent()->SetSize(-1, -1, x + 1, y, wxSIZE_USE_EXISTING);
-    //window->GetParent()->SetSize(-1, -1, x, y, wxSIZE_USE_EXISTING);
+    int x,y;
+    window->GetParent()->GetSize(&x, &y);
+    window->GetParent()->SetSize(-1, -1, x + 1, y, wxSIZE_USE_EXISTING);
+    window->GetParent()->SetSize(-1, -1, x, y, wxSIZE_USE_EXISTING);
+    */
+      #endif
 
 
    return WXToValue(window);
@@ -29,10 +40,6 @@ value wx_glcanvas_make_current(value inCanvas)
    {
       if (sgContext==0)
          sgContext = new wxGLContext(canvas, (wxGLContext *)0);
-
-      #ifdef HX_WINDOWS
-      //wglMakeCurrent(canvas->GetHDC(),sgContext->GetGLRC());
-      #endif
 
 		canvas->SetCurrent(*sgContext);
    }
