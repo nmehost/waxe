@@ -51,7 +51,9 @@ value wx_glcanvas_flip(value inCanvas)
 {
 	wxGLCanvas *canvas;
 	if (ValueToWX(inCanvas,canvas))
+   {
 		canvas->SwapBuffers();
+   }
 	return alloc_null();
 }
 DEFINE_PRIM(wx_glcanvas_flip,1)

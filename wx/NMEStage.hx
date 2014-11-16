@@ -3,6 +3,24 @@ package wx;
 import wx.Window;
 import wx.EventID;
 import nme.display.ManagedStage;
+import nme.display.BitmapData;
+
+typedef StageAttribs =
+{
+  ?width: Null<Int>,
+  ?height:Null<Int>,
+  ?fullscreen: Null<Bool>,
+  ?stencilBuffer: Null<Bool>,
+  ?depthBuffer: Null<Bool>,
+  ?antiAliasing: Null<Int>,
+  ?resizable: Null<Bool>,
+  ?vsync: Null<Bool>,
+  ?fps:Null<Float>,
+  ?color:Null<Int>,
+  ?title:String,
+  ?icon:BitmapData,
+};
+
 
 
 class NMEStage extends GLCanvas
@@ -10,23 +28,38 @@ class NMEStage extends GLCanvas
    public var stage(default,null) : ManagedStage;
    var mLastValue:Int;
    var mTimer:Timer;
+   var seenPaint:Bool;
 
-   function new(inHandle:Dynamic,inWidth:Int, inHeight:Int)
+   function new(inHandle:Dynamic,inAttribs:StageAttribs)
    {
+      seenPaint = false;
       super(inHandle);
+ 
+      var w:Int = inAttribs.width==null ? -1 : inAttribs.width;
+      var h:Int = inAttribs.width==null ? -1 : inAttribs.height;
+         
       var me = this;
       mLastValue = 0;
-      stage = nme.Lib.createManagedStage(inWidth,inHeight);
+      stage = nme.Lib.createManagedStage(w,h);
       stage.onQuit = App.quit;
       stage.setNextWake = me.setNextWake;
-      stage.renderRequest = me.refresh;
+      stage.renderRequest = requestRender;
+      if (inAttribs.fps!=null)
+         stage.frameRate = inAttribs.fps;
+      if (inAttribs.color!=null)
+         stage.opaqueBackground = inAttribs.color;
+      else
+         stage.opaqueBackground = 0;
       onSize = myOnSize;
 
       // Must use proper paint handler, or opengl will not work
-      //setHandler(wx.EventID.PAINT, me.render);
+      setHandler(wx.EventID.PAINT, me.render);
       onPaint = render;
       mTimer = new Timer(this);
-      stage.window.nextWakeHandler = setNextWake;
+      var window = stage.window;
+      window.nextWakeHandler = setNextWake;
+      window.beginRenderImmediate = makeCurrent;
+      window.endRenderImmediate = flip;
       setNextWake(1);
    }
 
@@ -36,10 +69,20 @@ class NMEStage extends GLCanvas
       super._wx_deleted();
    }
 
+   function requestRender() : Bool
+   {
+      if (seenPaint)
+         return true;
+      else
+         refresh();
+
+      return false;
+   }
+
    function myOnSize(event:Dynamic)
    {
       var s = clientSize;
-      stage.resize(s.width,s.height);
+      stage.onWindowSize(s.width,s.height);
    }
 
    function pumpMouseEvent(inID:Int, inEvent:Dynamic)
@@ -109,15 +152,21 @@ class NMEStage extends GLCanvas
 
    function setNextWake(inDelay:Float)
    {
+      //trace("setNextWake " + inDelay);
       if (inDelay>2000000)
-         inDelay = 2000000;
+      {
+         return;
+         //inDelay = 2000000;
+      }
       var start = Std.int(inDelay*1000);
-      if (start<=1) start = 1;
+      if (start<=1)
+          start = 1;
       mTimer.start(start , true );
    }
 
    function render(_)
    {
+      seenPaint = true;
       makeCurrent();
       stage.window.beginRender();
       stage.onRender(true);
@@ -125,15 +174,15 @@ class NMEStage extends GLCanvas
       flip();
    }
 
-   public static function create(inParent:Window,?inID:Int,?inPosition:Position,
-                   ?inSize:Size, ?inStyle:Int )
+   public static function create(inParent:Window,?inID:Int,
+                   ?inPosition:Position,
+                   ?inAttribs: StageAttribs,
+                  ?inStyle:Int )
    {
       if (inParent==null)
          throw Error.INVALID_PARENT;
-      var handle = GLCanvas.wx_glcanvas_create([inParent.wxHandle,inID,"",inPosition,inSize, inStyle] );
-      var w:Int = inSize==null ? -1 : inSize.width;
-      var h:Int = inSize==null ? -1 : inSize.height;
-      var stage = new NMEStage(handle,w,h);
+      var handle = GLCanvas.wx_glcanvas_create([inParent.wxHandle,inID,"",inPosition,inAttribs, inStyle] );
+      var stage = new NMEStage(handle,inAttribs==null?{}:inAttribs);
       //stage.myOnSize(null);
       return stage;
    }
