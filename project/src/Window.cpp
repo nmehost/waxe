@@ -36,6 +36,19 @@ value wx_window_destroy(value inWindow)
 }
 DEFINE_PRIM(wx_window_destroy,1)
 
+value wx_window_post_idle_event(value inWindow)
+{
+   wxWindow *window;
+   if (ValueToWX(inWindow,window))
+   {
+      wxIdleEvent evt;
+      wxPostEvent(window,evt);
+   }
+   return alloc_null();
+}
+DEFINE_PRIM(wx_window_post_idle_event,1)
+
+
 
 
 WIN_PROPERTY(wx_window,wxWindow,size,GetSize,SetSize,Val2Size)

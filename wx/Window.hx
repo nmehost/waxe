@@ -186,6 +186,11 @@ class Window extends EventHandler
       return f;
    }
 
+   public function postIdleEvent()
+   {
+      wx_window_post_idle_event(wxHandle);
+   }
+
 
 
    static var wx_window_get_position = Loader.load("wx_window_get_position",1);
@@ -206,6 +211,7 @@ class Window extends EventHandler
    static var wx_window_set_name = Loader.load("wx_window_set_name",2);
    static var wx_window_refresh = Loader.load("wx_window_refresh",1);
    static var wx_window_destroy = Loader.load("wx_window_destroy",1);
+   static var wx_window_post_idle_event = Loader.load("wx_window_post_idle_event",1);
 }
 
 

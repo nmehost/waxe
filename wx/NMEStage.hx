@@ -123,6 +123,7 @@ class NMEStage extends GLCanvas
       super.HandleEvent(event);
       switch(Type.createEnumIndex(EventID,Std.int(event.type)))
       {
+         case EventID.LEFT_DCLICK: pumpMouseEvent(ManagedStage.etMouseDown,event); 
          case EventID.LEFT_DOWN: pumpMouseEvent(ManagedStage.etMouseDown,event); 
          case EventID.LEFT_UP: pumpMouseEvent(ManagedStage.etMouseUp,event); 
          case EventID.MOTION: pumpMouseEvent(ManagedStage.etMouseMove,event); 
@@ -159,7 +160,12 @@ class NMEStage extends GLCanvas
          //inDelay = 2000000;
       }
       var start = Std.int(inDelay*1000);
-      if (start<=1)
+      if (start<=0)
+      {
+         postIdleEvent();
+         return;
+      }
+      else
           start = 1;
       mTimer.start(start , true );
    }
