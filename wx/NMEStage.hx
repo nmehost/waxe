@@ -160,7 +160,7 @@ class NMEStage extends GLCanvas
          //inDelay = 2000000;
       }
       var start = Std.int(inDelay*1000);
-      if (start<=0)
+      if (start<=#if windows 10 #else 0 #end)
       {
          postIdleEvent();
          return;
@@ -189,7 +189,7 @@ class NMEStage extends GLCanvas
          throw Error.INVALID_PARENT;
       var handle = GLCanvas.wx_glcanvas_create([inParent.wxHandle,inID,"",inPosition,inAttribs, inStyle] );
       var stage = new NMEStage(handle,inAttribs==null?{}:inAttribs);
-      //stage.myOnSize(null);
+      stage.myOnSize(null);
       return stage;
    }
 
