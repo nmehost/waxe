@@ -471,6 +471,8 @@ bool HaxeEventHandler::ProcessEvent(wxEvent& event)
 
 	bool skip =  val_bool(val_field(obj,val_id("skip")));
 
+	//if ( type==wxEVT_SIZE )
+   //   skip = true;
 	if ( type==wxEVT_CLOSE_WINDOW )
 	{
 		wxCloseEvent *evt = wxDynamicCast(&event,wxCloseEvent);

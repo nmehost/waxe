@@ -42,11 +42,8 @@ value wx_glcanvas_make_current(value inCanvas)
       if (sgContext==0)
          sgContext = new wxGLContext(canvas, (wxGLContext *)0);
 
-      if (sgCurrentCanvas!=canvas)
-      {
-		   canvas->SetCurrent(*sgContext);
-         sgCurrentCanvas = canvas;
-      }
+		canvas->SetCurrent(*sgContext);
+      sgCurrentCanvas = canvas;
    }
 	return alloc_null();
 }

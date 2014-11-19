@@ -58,7 +58,7 @@ class NMEStage extends GLCanvas
       mTimer = new Timer(this);
       var window = stage.window;
       window.nextWakeHandler = setNextWake;
-      window.beginRenderImmediate = makeCurrent;
+      //window.beginRenderImmediate = makeCurrent;
       window.endRenderImmediate = flip;
       setNextWake(1);
    }
