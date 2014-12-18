@@ -5,7 +5,7 @@
   "tags": ["waxe", "widgets"],
   "description": "wxWidgets + haxe library.",
   "version": "3.0.0",
-  "binaryversion": "5",
+  "binaryversion": "6",
   "releasenote": "see Changes.md",
   "contributors": ["gamehaxe"],
   "dependencies": {}
