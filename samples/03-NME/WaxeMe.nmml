@@ -16,13 +16,11 @@
 		height="600"
 		orientation="landscape"
 		fps="24"
-		background="0xffffff"
+		background="0x404060"
       resizeable="true"
 		hardware="true"
 	/>
 
-  <staticlink />
-  <ndll name="waxe" />
-  <ndll name="nme" />
+<haxelib name="waxe" />
 
 </project>

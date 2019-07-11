@@ -28,11 +28,9 @@ class NMEStage extends GLCanvas
    public var stage(default,null) : ManagedStage;
    var mLastValue:Int;
    var mTimer:Timer;
-   var seenPaint:Bool;
 
    function new(inHandle:Dynamic,inAttribs:StageAttribs)
    {
-      seenPaint = false;
       super(inHandle);
  
       var w:Int = inAttribs.width==null ? -1 : inAttribs.width;
@@ -50,10 +48,11 @@ class NMEStage extends GLCanvas
          stage.opaqueBackground = inAttribs.color;
       else
          stage.opaqueBackground = 0;
+      stage.scaleMode = nme.display.StageScaleMode.NO_SCALE;
+      stage.align = nme.display.StageAlign.TOP_LEFT;
       onSize = myOnSize;
 
       // Must use proper paint handler, or opengl will not work
-      setHandler(wx.EventID.PAINT, me.render);
       onPaint = render;
       mTimer = new Timer(this);
       var window = stage.window;
@@ -71,11 +70,7 @@ class NMEStage extends GLCanvas
 
    function requestRender() : Bool
    {
-      if (seenPaint)
-         return true;
-      else
-         refresh();
-
+      refresh();
       return false;
    }
 
@@ -153,7 +148,6 @@ class NMEStage extends GLCanvas
 
    function setNextWake(inDelay:Float)
    {
-      //trace("setNextWake " + inDelay);
       if (inDelay>2000000)
       {
          return;
@@ -172,7 +166,6 @@ class NMEStage extends GLCanvas
 
    function render(_)
    {
-      seenPaint = true;
       makeCurrent();
       stage.window.beginRender();
       stage.onRender(true);

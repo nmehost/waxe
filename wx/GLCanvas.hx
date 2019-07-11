@@ -4,7 +4,17 @@ import wx.Window;
 
 class GLCanvas extends Window
 {
-   function new(inHandle:Dynamic) { super(inHandle); }
+   function new(inHandle:Dynamic)
+   {
+      super(inHandle);
+      onSize = setCanvasSize;
+   }
+
+   public function setCanvasSize(ev:Dynamic)
+   {
+      trace('setCanvasSize($ev)');
+   }
+
    public static function create(inParent:Window, ?inID:Null<Int>,
                    ?inPosition:Position,
                    ?inSize:Size, ?inStyle:Int )

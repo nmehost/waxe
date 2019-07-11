@@ -7,17 +7,23 @@ wxGLCanvas  *sgCurrentCanvas = 0;
 
 value wx_glcanvas_create(value inParams)
 {
-	CreationParams params(inParams);
-    int *attrs = 0;
+    CreationParams params(inParams);
+    int attrs[] = {
+        WX_GL_CORE_PROFILE,
+        WX_GL_MAJOR_VERSION, 2,
+        WX_GL_MINOR_VERSION, 0,
+        0,
+    };
     wxGLCanvas *window = new wxGLCanvas(params.parent,params.id, attrs,
-			  params.position,params.size,params.flags);
+       params.position,params.size,params.flags);
+
 
       #ifdef HX_WINDOWS
       if (sgContext==0)
          sgContext = new wxGLContext(window, (wxGLContext *)0);
 
-
       wglMakeCurrent(window->GetHDC(),sgContext->GetGLRC());
+
 /*
       TODO - still some issues here
 

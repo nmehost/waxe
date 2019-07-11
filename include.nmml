@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+  <haxedef name="NME_NO_ANGLE" value="1" />
+  <ndll name="nme" static="true" haxelib="nme" />
+
+</project>

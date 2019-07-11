@@ -11,7 +11,7 @@
 #include <hx/CFFI.h>
 #include "HaxeAPI.h"
 #include "WaxeBinVersion.h"
-#include <WaxeWorksVersion.h>
+//#include <WaxeWorksVersion.h>
 
 
 // --- Bootstrap Object ---------------------------
@@ -79,7 +79,7 @@ DEFINE_PRIM(wx_get_ndll_version,0);
 
 value wx_get_waxe_works_version()
 {
-   return alloc_string( WAXE_WORKS_VERSION );
+   return alloc_string( "2.0" );
 }
 DEFINE_PRIM(wx_get_waxe_works_version,0);
 

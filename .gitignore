@@ -1,6 +1,9 @@
 ndll/*
 project/obj/*
 lib/*
+cpp/
+*.swp
+out.txt
 
 samples/00-Minimal/bin/*
 samples/00-Minimal/waxe.ndll

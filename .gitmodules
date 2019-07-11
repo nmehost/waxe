@@ -1,0 +1,15 @@
+[submodule "modules/wxWidgets"]
+	path = modules/wxWidgets
+	url = https://github.com/wxWidgets/wxWidgets
+[submodule "modules/libpng"]
+	path = modules/libpng
+	url = https://github.com/wxWidgets/libpng
+[submodule "modules/libtiff"]
+	path = modules/libtiff
+	url = https://github.com/wxWidgets/libtiff
+[submodule "modules/libjpeg-turbo"]
+	path = modules/libjpeg-turbo
+	url = https://github.com/wxWidgets/libjpeg-turbo
+[submodule "modules/zlib"]
+	path = modules/zlib
+	url = https://github.com/wxWidgets/zlib
