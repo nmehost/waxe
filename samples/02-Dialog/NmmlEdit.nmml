@@ -21,11 +21,6 @@
 		hardware="true"
 	/>
 
-  <haxelib name="waxe" />
-
   <ndll name="waxe" haxelib="waxe" />
-  <ndll name="std" />
-  <ndll name="zlib" />
-  <ndll name="regexp" />
 
 </project>

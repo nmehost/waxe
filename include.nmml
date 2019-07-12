@@ -3,5 +3,6 @@
 
   <haxedef name="NME_NO_ANGLE" value="1" />
   <ndll name="nme" static="true" haxelib="nme" />
+  <ndll name="waxe" unless="waxe_static_link" />
 
 </project>

@@ -1,0 +1,4 @@
+-main Simple
+-cp ../..
+-cpp cpp
+-D HXCPP_M64
