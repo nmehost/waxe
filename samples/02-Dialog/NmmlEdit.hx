@@ -48,6 +48,7 @@ class NmmlEdit
 
       frame.sizer = dialogSizer;
       dialogSizer.setSizeHints(ApplicationMain.frame);
+
       //frame.size = { width:500, height:500 };
    }
 

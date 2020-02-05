@@ -21,6 +21,7 @@
 		hardware="true"
 	/>
 
+  <haxedef name="nme_no_stage" haxelib="1" />
   <ndll name="waxe" haxelib="waxe" />
 
 </project>
